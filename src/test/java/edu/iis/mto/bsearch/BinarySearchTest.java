@@ -41,7 +41,7 @@ class BinarySearchTest {
     @Test
     public void isTheLastElementInTheSequence() {
         int[] array = {1, 2, 3, 4};
-        int key = 4;
+        int key = 2;
         SearchResult search = BinarySearch.search(key, array);
         assertEquals(key, search.getPosition());
         assertTrue(search.isFound());
@@ -50,18 +50,28 @@ class BinarySearchTest {
     @Test
     public void isTheMiddleElementInTheOddSequence() {
         int[] array = {1, 2, 3, 4, 5};
-        int key = 4;
+        int key = 3;
         SearchResult search = BinarySearch.search(key, array);
-        assertEquals(array.length / 2, search.getPosition());
+        assertEquals(3, search.getPosition());
         assertTrue(search.isFound());
     }
 
     @Test
     public void isTheMiddleElementInTheEvenSequence() {
         int[] array = {1, 2, 3, 4};
-        int key = 3;
+        int key = 2;
         SearchResult search = BinarySearch.search(key, array);
-        assertEquals(array.length / 2, search.getPosition());
+        assertEquals(2, search.getPosition());
         assertTrue(search.isFound());
+    }
+
+    @Test
+    public void isTheSequenceEmpty()
+    {
+        int[] array = {};
+        int key = -3;
+        SearchResult search = BinarySearch.search(key,array);
+        assertEquals(-1,search.getPosition());
+        assertFalse(search.isFound());
     }
 }
